@@ -6,6 +6,12 @@ The application provides dedicated portals for **Faculty** and **Students**, ena
 
 ---
 
+## Overview
+
+The Slot Management System digitizes the process of scheduling Internal Assessment (IA) and Laboratory Continuous Assessment (Lab CA) examinations. It minimizes manual effort by preventing scheduling conflicts, providing secure role-based access, and offering an interactive calendar interface for both faculty and students.
+
+---
+
 ## Features
 
 ### Faculty Portal
@@ -14,7 +20,7 @@ The application provides dedicated portals for **Faculty** and **Students**, ena
 - Book IA and Lab CA examination slots
 - Manage bookings for multiple academic years
 - Edit and delete existing bookings
-- Automatic slot conflict detection
+- Automatic conflict detection to prevent overlapping bookings based on date, time, and venue.
 - Send email notifications after successful booking
 - Interactive calendar for managing schedules
 
@@ -93,7 +99,7 @@ The application provides dedicated portals for **Faculty** and **Students**, ena
 
 ---
 
-#  Authentication
+# Security & Authentication
 
 Faculty authentication is implemented using **JSON Web Tokens (JWT)**.
 
@@ -134,3 +140,14 @@ Before creating a booking, the application validates:
 If another booking already exists for the selected venue during the chosen time, the request is rejected, preventing scheduling conflicts.
 
 ---
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/login | Faculty Login |
+| POST | /api/bookings/:year/:type/book | Book Slot |
+| GET | /api/bookings/:year/:type/calendar/events | View Calendar |
+| GET | /api/bookings/:year/:type/edit/slots | Fetch Slots |
+| PUT | /api/bookings/:year/:type/edit/slot/:id | Update Slot |
+| DELETE | /api/bookings/:year/:type/edit/slot/:id | Delete Slot |
